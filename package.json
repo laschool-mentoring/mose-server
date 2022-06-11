@@ -1,0 +1,17 @@
+{
+  "name": "kblaschool_mentoring",
+  "version": "1.0.0",
+  "description": "kblaschool",
+  "main": "app.js",
+  "scripts": {
+    "start" : "nodemon app" 
+  },
+  "author": "younggyo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
