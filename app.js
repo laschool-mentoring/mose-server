@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser'); // 요청된 쿠키를 읽을 때
 const session = require('express-session'); // 세션에 대한 기본 값들을 지정해주는 패키지
 const dotenv = require('dotenv'); // .env 파일 내에 있는 변수들을 사용할 수 있게 만들어주는 패키지
 
+const basicRouter = require('./router.js');
+
 // express 객체를 app 이라는 이름을 붙여서 사용하겠다
 const app = express();
 dotenv.config(); // .env 파일 안에 있는 환경변수를 읽을 수 있게 됩니다. -> process.env.(key) : value
@@ -34,10 +36,13 @@ app.use((req, res, next) => {
 
 // 2. 경로를 지정하는 방법
 // GET 요청이 올 때, 어떤 동작을 할지 적는 부분, localhost:8080/ app.get(URL, 미들웨어) -> GET URL 요청이 올 때 실행됨
-app.get('/', (req, res, next) => {
-    console.log('GET 요청에서 실행되는 친구입니다');
-    res.status(200).send('잘 응답했습니다'); // 이부분
-});
+// app.get('/', (req, res, next) => {
+    // console.log('GET 요청에서 실행되는 친구입니다');
+    // res.status(200).send('잘 응답했습니다'); // 이부분
+// });
+
+app.use('/', basicRouter); // 주소 '/' 로 들어오는 요청으로 들어오는 요청은 다 basicRouter로 넘기겠다.
+
 
 // localhost:8080/errer -> 에러를 날리는 미들웨어 선언
 app.get('/error', (req, res, next) => {
